@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class FizzBuzzDriverTest {
@@ -19,6 +20,8 @@ public class FizzBuzzDriverTest {
     @Test
     public void run() {
         List<String> transformed = fizzBuzzDriver.run();
+        assertThat(transformed, notNullValue());
+        assertThat(transformed.size(), is(100));
         int count = 0;
         for (String expectedOutput : EXPECTED_OUTPUT.split(",")) {
             assertThat(transformed.get(count++), is(expectedOutput));
